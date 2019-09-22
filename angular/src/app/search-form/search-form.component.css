@@ -1,0 +1,14 @@
+ul{
+  padding-left: 42%;
+}
+
+#pills-results{
+  margin-top: 10px;
+}
+
+#pills-favorites {
+  margin-top: 10px;
+}
+app-results-table {
+  text-align: left;
+}

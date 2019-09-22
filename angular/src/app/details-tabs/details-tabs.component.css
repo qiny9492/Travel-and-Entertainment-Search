@@ -1,0 +1,77 @@
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+
+}
+
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+  z-index:-1;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+  z-index: 1;
+}
+
+table {
+  margin-top: 10px;
+}
+
+#twitter{
+  display: inline-block;
+}
+
+select {
+  margin-top: 10px;
+}
+
+img.pho {
+  width:100%;
+  margin-bottom: 2%;
+  padding: 2px 2px 2px 2px;
+  border:solid lightgray 1px;
+}
+
+.row-size {
+  width:25%;
+}
+
+#photo-table {
+  table-layout: fixed;
+}
+
+.profile {
+  width:50px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.b1 {
+  margin-top: 10px;
+}
+agm-map {
+  height: 300px;
+}
+
+#mapForm {
+  margin-top: 10px;
+}
+
+#travelmode {
+  margin-top: 0px;
+}

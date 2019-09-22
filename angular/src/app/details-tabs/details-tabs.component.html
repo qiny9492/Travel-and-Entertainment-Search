@@ -1,0 +1,298 @@
+<div class="container" id="details-table">
+  <h2>{{ name }}</h2>
+
+  <div class="row">
+  <button type="button" class="btn btn-light float-left" (click)="goList()"><i class="fa fa-chevron-left"></i>List</button>
+  <button type="button" class="btn btn-light float-right"><i class="fa fa-star-o"></i></button>
+  <!--<button type="button" class="btn btn-light" id="twitter" (click)="sendTwitter()"><i class="fa fa-twitter-square fa-3x"></i></button>-->
+  <!--<i class="fa fa-twitter-square fa-3x"></i>-->
+  <a class="twitter-share-button float-right"
+     href="{{ twitter_link }}" id="twitter">
+    <i class="fa fa-twitter-square fa-3x"></i></a>
+
+  </div>
+
+
+
+
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link" href="#"  [ngClass]="{'active': selected == 'info'}" (click)="getInfo()" id="info-tab" data-toggle="tab" role="tab" aria-controls="info">Info</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" [ngClass]="{'active': selected == 'photos'}" (click)="getPhotos()" id="photos-tab" data-toggle="tab" role="tab" aria-controls="photos">Photos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" [ngClass]="{'active': selected == 'map'}" (click)="getMap()" id="map-tab" data-toggle="tab" role="tab" aria-controls="map">Map</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" [ngClass]="{'active': selected == 'reviews'}" (click)="getReviews()" id="reviews-tab" data-toggle="tab" role="tab" aria-controls="reviews">Reviews</a>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+
+    <div class="tab-pane fade show" id="info" role="tabpanel" aria-labelledby="info-tab" [ngClass]="{'active': selected == 'info'}">
+
+      <table class="table table-striped">
+        <tbody>
+        <tr *ngIf="addr != null">
+          <th scope="row">Address</th>
+          <td>{{ addr }}</td>
+
+        </tr>
+        <tr *ngIf="phone != null">
+          <th>Phone Number</th>
+          <td>{{ phone }}</td>
+        </tr>
+        <tr *ngIf="price != null">
+          <th scope="row">Price Level</th>
+          <td>{{ price }}</td>
+        </tr>
+        <tr *ngIf="rating != null">
+          <th scope="row">Rating</th>
+          <td>
+            {{ rating }}
+            <div class="stars-outer" >
+              <div class="stars-inner" style.width = '{{ percent }}' >
+
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="google_page != null">
+          <th scope="row">Google Page</th>
+          <td><a href="{{ google_page }}">{{ google_page }}</a></td>
+        </tr>
+        <tr *ngIf="website != null">
+          <th scope="row">Website</th>
+          <td><a href="{{ website }}"> {{ website }}</a></td>
+        </tr>
+        <tr *ngIf="hours != null">
+          <th scope="row">Hours</th>
+          <td>{{ hours }} <a href="#" (click)="openModal(template)">Daily open hours</a> </td>
+        </tr>
+
+        </tbody>
+      </table>
+
+
+
+    </div>
+
+
+
+
+    <div class="tab-pane fade show" id="photos" role="tabpanel" aria-labelledby="photos-tab" [ngClass]="{'active': selected == 'photos'}">
+      <table class="table container" id="photo-table">
+        <tbody>
+        <tr>
+          <td scope="row" class="row-size">
+            <div *ngFor="let url_one of col_one">
+            <a href="{{url_one}}" target="_blank">
+              <img class="pho" src="{{url_one}}">
+            </a>
+            </div>
+          </td>
+          <td scope="row" class="row-size">
+            <div *ngFor="let url_two of col_two">
+              <a href="{{url_two}}" target="_blank">
+              <img class="pho" src="{{url_two}}">
+              </a>
+            </div>
+          </td>
+          <td scope="row" class="row-size">
+            <div *ngFor="let url_three of col_three">
+              <a href="{{url_three}}" target="_blank">
+              <img class="pho" src="{{url_three}}">
+              </a>
+            </div>
+          </td>
+          <td scope="row" class="row-size">
+            <div *ngFor="let url_four of col_four">
+              <a href="{{url_four}}" target="_blank">
+              <img class="pho" src="{{url_four}}">
+              </a>
+            </div>
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+    <div class="tab-pane fade show" id="map" role="tabpanel" aria-labelledby="map-tab" [ngClass]="{'active': selected == 'map'}">
+      <form class="needs-validation form-group" id="mapForm" novalidate>
+        <div class="row">
+          <label class="col">From</label>
+          <label class="col">To</label>
+          <label class="col">Travel Mode</label>
+          <label class="col"></label>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" id="from" [value]="from_loc" required>
+
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" id="to" [value]="to_loc" disabled>
+          </div>
+          <div class="col">
+            <select class="custom-select form-control" id="travelmode" required>
+              <option value="driving" (click)="selectDriving()">Driving</option>
+              <option value="bicycling" (click)="selectBicycling()">Bicycling</option>
+              <option value="transit" (click)="selectTransit()">Transit</option>
+              <option value="walking" (click)="selectWalking()">Walking</option>
+            </select>
+
+          </div>
+          <div class="col">
+
+            <button type="button" class="btn btn-primary" id="godir" (click)="goDirections()">Go Directions</button>
+          </div>
+        </div>
+
+      </form>
+
+      <agm-map [latitude]="place_lat" [longitude]="place_lon" [zoom]="zoom">
+        <agm-marker [latitude]="place_lat" [longitude]="place_lon"></agm-marker>
+        <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination" [travelMode]="mode" [panel]="myPanel" [provideRouteAlternatives]="alter"></agm-direction>
+      </agm-map>
+      <div #myPanel>
+
+      </div>
+
+
+
+
+      </div>
+    <div class="tab-pane fade show" id="reviews" role="tabpanel" aria-labelledby="reviews-tab" [ngClass]="{'active': selected == 'reviews'}">
+      <!--<select class="selectpicker">-->
+        <!--<option (click)="selectGoogle()">Google Reviews</option>-->
+        <!--<option (click)="selectYelp()">Yelp Reviews</option>-->
+      <!--</select>-->
+
+      <!--<select class="selectpicker">-->
+        <!--<option>Default Order</option>-->
+        <!--<option>Highest Rating</option>-->
+        <!--<option>Lowest Rating</option>-->
+        <!--<option>Most Recent</option>-->
+        <!--<option>Least Recent</option>-->
+      <!--</select>-->
+
+      <div class="dropdown btn-group b1" role="group">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{rselect}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#" (click)="selectGoogle()">Google Reviews</a>
+          <a class="dropdown-item" href="#" (click)="selectYelp()">Yelp Reviews</a>
+        </div>
+      </div>
+
+      <div class="dropdown btn-group b1" role="group">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{order_select}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+          <a class="dropdown-item" href="#" (click)="selectDefault()">Default Order</a>
+          <a class="dropdown-item" href="#" (click)="selectHighest()">Highest Rating</a>
+          <a class="dropdown-item" href="#" (click)="selectLowest()">Lowest Rating</a>
+          <a class="dropdown-item" href="#" (click)="selectMostRecent()">Most Recent</a>
+          <a class="dropdown-item" href="#" (click)="selectLeastRecent()">Least Recent</a>
+        </div>
+      </div>
+
+
+
+
+      <table class="table" *ngIf="reviews_select == 'google'">
+      <tbody>
+      <tr *ngFor="let j of index_order">
+      <td scope="row">
+      <a href="{{ author_url_arr[j] }}" target="_blank"><img src="{{ profile_url_arr[j] }}" class="profile"></a>
+      </td>
+      <td>
+      <h5><a href="{{author_url_arr[j]}}" target="_blank">{{author_name_arr[j]}}</a></h5>
+      <div>
+        <span [innerHTML]="star_arr[j]" id="stars-display"></span>
+        {{ftime_arr[j]}}</div>
+      <p>{{rtext_arr[j]}}</p>
+
+      </td>
+      </tr>
+      </tbody>
+
+
+      </table>
+
+      <table class="table" *ngIf="reviews_select == 'yelp'">
+        <tbody>
+        <tr *ngFor="let j of index_order">
+          <td scope="row">
+            <a href="{{ yelp_author_url[j] }}" target="_blank"><img src="{{ yelp_profile[j] }}" class="profile"></a>
+          </td>
+          <td>
+            <h5><a href="{{yelp_author_url[j]}}" target="_blank">{{yelp_author_name[j]}}</a></h5>
+            <div>
+              <span [innerHTML]="yelp_star[j]"></span>
+              {{yelp_time[j]}}</div>
+            <p>{{yelp_rtext[j]}}</p>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Open hours</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table">
+      <tbody>
+      <tr>
+        <th scope="row">{{ today[0]}}</th>
+        <th>{{ today[1] }}</th>
+      </tr>
+      <tr *ngFor="let weekday of weekday_arr; let i = index ">
+        <td scope="row">{{ weekday }}</td>
+        <td>{{ hours_arr[i] }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modalRef.hide()">Close</button>
+  </div>
+</ng-template>
+
+
+

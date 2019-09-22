@@ -1,0 +1,184 @@
+<!--<div class="container">-->
+  <!--<form class="needs-validation center-block" id="myForm" novalidate>-->
+    <!--<h2 class="text-center">Travel and Entertainment Search</h2>-->
+    <!--<div class="form-group row">-->
+      <!--<label for="keyword" class="col-sm-2 col-form-label">Keyword</label>-->
+      <!--<div class="col-sm-10">-->
+        <!--<input type="text" id="keyword" class="form-control" name="keyword" [(ngModel)]="keyword" required >-->
+        <!--<div class="invalid-feedback">Please enter a keyword.</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+      <!--<label for="category" class="col-sm-2 col-form-label">Category</label>-->
+      <!--<div class="col-sm-10">-->
+        <!--<select id="category" class="form-control custom-select" name="category" [(ngModel)]="category">-->
+          <!--<option value="default">Default</option>-->
+          <!--<option value="airport">Airport</option>-->
+          <!--<option value="amusement park">Amusement Park</option>-->
+          <!--<option value="aquarium">Aquarium</option>-->
+          <!--<option value="art gallery">Art Gallery</option>-->
+          <!--<option value="bakery">Bakery</option>-->
+          <!--<option value="bar">Bar</option>-->
+          <!--<option value="beauty salon">Beauty Salon</option>-->
+          <!--<option value="bowling alley">Bowling Alley</option>-->
+          <!--<option value="bus station">Bus Station</option>-->
+          <!--<option value="cafe">Cafe</option>-->
+          <!--<option value="campground">Campground</option>-->
+          <!--<option value="car rental">Car Rental</option>-->
+          <!--<option value="casino">Casino</option>-->
+          <!--<option value="lodging">Lodging</option>-->
+          <!--<option value="movie theater">Movie Theater</option>-->
+          <!--<option value="museum">Museum</option>-->
+          <!--<option value="night club">Night Club</option>-->
+          <!--<option value="park">Park</option>-->
+          <!--<option value="parking">Parking</option>-->
+          <!--<option value="restaurant">Restaurant</option>-->
+          <!--<option value="shopping mall">Shopping Mall</option>-->
+          <!--<option value="stadium">Stadium</option>-->
+          <!--<option value="subway station">Subway Station</option>-->
+          <!--<option value="taxi stand">Taxi Stand</option>-->
+          <!--<option value="train station">Train Station</option>-->
+          <!--<option value="transit station">Transit Station</option>-->
+          <!--<option value="travel agency">Travel Agency</option>-->
+          <!--<option value="zoo">Zoo</option>-->
+        <!--</select>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+      <!--<label for="distance" class="col-sm-2 col-form-label">Distance(miles)</label>-->
+      <!--<div class="col-sm-10">-->
+        <!--<input type="text" id="distance" class="form-control" placeholder="10" value="10" name="distance" [(ngModel)]="distance">-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group row">-->
+      <!--<label for="choose_lication" class="col-sm-2 col-form-label">From</label>-->
+      <!--<div id="choose_lication" class="col-sm-10">-->
+        <!--<div class="form-check custom-control custom-radio">-->
+          <!--<input type="radio" name="location" value="here" class="form-check-input" id="here" name="here" [(ngModel)]="here">-->
+          <!--<label class="form-check-label" for="here">Current location</label>-->
+        <!--</div>-->
+        <!--<div class="form-check custom-control custom-radio">-->
+          <!--<input type="radio" name="location" value="" class="form-check-input" id="otherloc" (click)="clickOther($event)">-->
+          <!--<label class="form-check-label" for="otherloc">Other. Please specify:</label>-->
+
+          <!--<input type="text" id="text_address" class="form-control" name="other_location" placeholder="Enter a location" [(ngModel)]="other_location" required readonly>-->
+          <!--<div class="invalid-feedback">Please enter a location.</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+    <!--</div>-->
+    <!--<button type="submit" class="btn btn-primary" (click)="onSubmit($event)">Search</button>-->
+    <!--<button type="reset" class="btn btn-light">Clear</button>-->
+
+  <!--</form>-->
+<!--</div>-->
+
+<div class="container">
+  <form class="needs-validation center-block" id="myForm" novalidate #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <h2 class="text-center">Travel and Entertainment Search</h2>
+    <div class="form-group row">
+      <label for="keyword" class="col-sm-2 col-form-label">Keyword</label>
+      <div class="col-sm-10">
+        <input type="text" id="keyword" class="form-control" ngModel name="keyword" required>
+        <div class="invalid-feedback">Please enter a keyword.</div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="category" class="col-sm-2 col-form-label">Category</label>
+      <div class="col-sm-10">
+        <select id="category" class="form-control custom-select" ngModel name="category">
+          <option value="default">Default</option>
+          <option value="airport">Airport</option>
+          <option value="amusement park">Amusement Park</option>
+          <option value="aquarium">Aquarium</option>
+          <option value="art gallery">Art Gallery</option>
+          <option value="bakery">Bakery</option>
+          <option value="bar">Bar</option>
+          <option value="beauty salon">Beauty Salon</option>
+          <option value="bowling alley">Bowling Alley</option>
+          <option value="bus station">Bus Station</option>
+          <option value="cafe">Cafe</option>
+          <option value="campground">Campground</option>
+          <option value="car rental">Car Rental</option>
+          <option value="casino">Casino</option>
+          <option value="lodging">Lodging</option>
+          <option value="movie theater">Movie Theater</option>
+          <option value="museum">Museum</option>
+          <option value="night club">Night Club</option>
+          <option value="park">Park</option>
+          <option value="parking">Parking</option>
+          <option value="restaurant">Restaurant</option>
+          <option value="shopping mall">Shopping Mall</option>
+          <option value="stadium">Stadium</option>
+          <option value="subway station">Subway Station</option>
+          <option value="taxi stand">Taxi Stand</option>
+          <option value="train station">Train Station</option>
+          <option value="transit station">Transit Station</option>
+          <option value="travel agency">Travel Agency</option>
+          <option value="zoo">Zoo</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="distance" class="col-sm-2 col-form-label">Distance(miles)</label>
+      <div class="col-sm-10">
+        <input type="text" id="distance" class="form-control" placeholder="10" value="10" ngModel name="distance">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="choose_lication" class="col-sm-2 col-form-label">From</label>
+      <div id="choose_lication" class="col-sm-10">
+        <div class="form-check custom-control custom-radio">
+          <label class="form-check-label active" for="here">
+          <input type="radio" name="location" value="here" class="form-check-input" id="here" ngModel>
+          Current location</label>
+        </div>
+        <div class="form-check custom-control custom-radio">
+          <label class="form-check-label" for="otherloc">
+          <input type="radio" name="location" value="other_loc" class="form-check-input" id="otherloc" ngModel>
+          Other. Please specify:</label>
+
+          <input type="text" id="text_address" class="form-control" name="address" placeholder="Enter a location" ngModel required>
+          <div class="invalid-feedback">Please enter a location.</div>
+        </div>
+      </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary " >Search</button>
+    <button type="reset" class="btn btn-light">Clear</button>
+
+  </form>
+</div>
+
+<!--<div class="container">-->
+  <div class="text-center">
+  <!--<button type="button" class="btn btn-primary">Results</button>-->
+  <!--<button type="button" class="btn btn-light">Favorites</button>-->
+    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active': selected == 'results'}" href="#" (click)="displayResults()" id="results-tab" data-toggle="pill" role="tab" aria-controls="pills-results">Results</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [ngClass]="{'active': selected == 'favorites'}" href="#" (click)="displayFavorites()" id="favorites-tab" data-toggle="pill" role="tab" aria-controls="pills-favorites">Favorites</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show" [ngClass]="{'active': selected == 'results'}" id="pills-results" role="tabpanel" aria-labelledby="results-tab">
+
+
+        <app-results-table *ngIf="res" [res] = "res"></app-results-table>
+      </div>
+      <div class="tab-pane fade show" [ngClass]="{'active': selected == 'favorites'}" id="pills-favorites" role="tabpanel" aria-labelledby="favorites-tab">
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+<!--</div>-->
+
+<!--<app-results-table *ngIf="res" [res] = "res"></app-results-table>-->
